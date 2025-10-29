@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carbon Logger</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+        form { display: grid; gap: 10px; }
+        input, select { padding: 8px; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Log a New Activity</h1>
+
+    <form id="activity-form">
+        <label>User ID (e.g., 1):</label>
+        <input type="number" id="user_id" value="1" required>
+
+        <label>Activity Name (e.g., "Daily Commute"):</label>
+        <input type="text" id="act_name" value="Daily Commute" required>
+        
+        <label>Activity Type (e.g., "Driving"):</label>
+        <input type="text" id="act_type" value="Driving" required>
+
+        <label>Quantity:</label>
+        <input type="number" id="quantity" value="10" required>
+        
+        <label>Factor ID (e.g., 1 for "Gasoline Car"):</label>
+        <input type="number" id="factor_id" value="1" required>
+
+        <button type="submit">Log Activity & Get Footprint</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        const form = document.getElementById('activity-form');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Stop the form from reloading the page
+
+            // 1. Collect form data
+            const userId = document.getElementById('user_id').value;
+            const logData = {
+                user_id: parseInt(userId),
+                act_name: document.getElementById('act_name').value,
+                act_type: document.getElementById('act_type').value,
+                quantity: parseFloat(document.getElementById('quantity').value),
+                factor_id: parseInt(document.getElementById('factor_id').value)
+            };
+
+            try {
+                // 2. Send data to Flask backend
+                resultDiv.textContent = "Logging activity...";
+                const postResponse = await fetch('http://127.0.0.1:5000/log-activity', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(logData)
+                });
+
+                if (!postResponse.ok) throw new Error('Failed to log activity.');
+                
+                // 3. Get the new total footprint
+                resultDiv.textContent = "Calculating footprint...";
+                const getResponse = await fetch(`http://127.0.0.1:5000/footprint/${userId}`);
+                const result = await getResponse.json();
+
+                // 4. Display the result
+                resultDiv.textContent = `Success! User ${result.user_id}'s new total footprint is: ${result.total_footprint}`;
+
+            } catch (error) {
+                resultDiv.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+
+</body>
+</html>
