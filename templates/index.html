@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geo-Carbon Tracker</title>
+    <script src="/static/app.js" defer></script>
+    
+    <style>
+        /* --- General Page --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            max-width: 700px;
+            margin: 40px auto; /* Centers the content */
+            padding: 0 20px;
+        }
+
+        h1, h2 {
+            color: #005a9c; /* A nice blue color */
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e0e0e0;
+            margin: 30px 0;
+        }
+
+        /* --- The Form --- */
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: grid;
+            gap: 15px; /* Space between form elements */
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* --- Inputs, Selects, Buttons --- */
+        input[type="number"],
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Important for padding */
+            font-size: 1em;
+        }
+
+        /* --- Buttons --- */
+        button {
+            font-size: 1em;
+            font-weight: 600;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        /* The main form button */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* The "Load Data" button */
+        #load-data-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+        #load-data-btn:hover {
+            background-color: #5a6268;
+        }
+
+        /* --- Results Area --- */
+        #form-message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        #results-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        #results-container th,
+        #results-container td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        #results-container th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Log Your Carbon Activity</h1>
+
+    <form id="log-form">
+        <label for="user-id">User ID (for testing):</label>
+        <input type="number" id="user-id" value="1" required>
+
+        <label for="act-name">Activity Name (e.g., "Commute", "Trip to store"):</label>
+        <input type="text" id="act-name" value="Morning Commute" required>
+
+        <label for="act-type">Activity Type:</label>
+        <select id="act-type" required>
+            <option value="Driving (Car)">Driving (Car)</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Flight">Flight</option>
+        </select>
+        
+        <label for="quantity">Quantity (e.g., km, kWh):</label>
+        <input type="number" id="quantity" step="0.1" required>
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+        
+        <button type="submit">Log Activity</button>
+    </form>
+    
+    <div id="form-message"></div>
+
+    <hr>
+    
+    <h2>Your Footprint History</h2>
+    <button id="load-data-btn">Load My Data</button>
+    
+    <div id="results-container"></div>
+</body>
+</html>
