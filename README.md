@@ -2,6 +2,7 @@
 
 ## Setup information
 Ensure localhost on MySQL is running. Replace user credentials in app.py with respective credentials.
+Additionally ensure that you have required libraries in app.py installed. 
 
 ## Relational Schema
 
