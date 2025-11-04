@@ -6,7 +6,7 @@ Ensure localhost on MySQL is running. Replace user credentials in app.py with re
 ## Relational Schema
 
 ### Chen Diagram
-<img src="erdiag.svg" alt="Schema" width="200" height="150" />
+<img src="erdiag.svg" alt="Schema" width="800" height="600" />
 
 ### User
 - **user_id** (PK)
