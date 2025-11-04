@@ -1,7 +1,7 @@
 # Carbon Footprint Calculator
 
 ## Setup information
-XYZ
+Ensure localhost on MySQL is running. Replace user credentials in app.py with respective credentials.
 
 ## Relational Schema
 
@@ -74,7 +74,10 @@ XYZ
 - An **Activity** generates one **Recommendation** (M:1)
 
 ## Implementation details
-cuh ol uhef v
+- File `app.py` contains logic for `mysql-connector` and routing of HTML pages from local Flask server.
+- Directory `templates` contains the webpages.
+- Files `create_db.sql` and `functions_triggers.sql` contain database creation process and data retrieval/updation logic respectively.
+- `erdiag.svg` is the Chen diagram for the relational schema that we have devised for the project.
+- Directory `static` contains the JS files for handling the form logic from the HTML pages to the Python file.
 
-## Additional Information
 

@@ -1,2 +1,2 @@
-create_db.sql.sql linguist-detectable=true
+create_db.sql linguist-detectable=true
 functions_triggers.sql linguist-detectable=true
