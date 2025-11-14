@@ -7,7 +7,8 @@
 **Project Title:** Geo-Carbon Tracker - Regional Carbon Footprint Calculator
 
 **Team Members:**
-- [Team Member Names to be filled]
+- Vishwambhara R Hebbalalu (PES1UG23CS700) [github.com/vishwambharaRH]
+- Vrishank N Amembal (PES1UG23CS705) [github.com/vrishank-na]
 
 **Institution:** [Institution Name]
 
@@ -1453,18 +1454,6 @@ Solution: Run functions_triggers.sql after create_db.sql
 Solution: Change port in app.py:
   app.run(debug=True, port=5001)
 ```
-
----
-
-## Team Contributions
-
-| Team Member | Contributions |
-|-------------|---------------|
-| [Member 1]  | Database design, ER diagram, Schema creation |
-| [Member 2]  | Stored procedures, Functions, Triggers |
-| [Member 3]  | Flask backend, API development |
-| [Member 4]  | Frontend HTML/CSS/JavaScript |
-| [Member 5]  | Testing, Documentation, Report |
 
 ---
 
